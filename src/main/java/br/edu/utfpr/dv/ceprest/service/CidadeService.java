@@ -41,6 +41,8 @@ public class CidadeService {
 		}
 	}
 	
+	
+	
 	@POST
 	@Path("/listar/porestado")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -54,4 +56,26 @@ public class CidadeService {
 		}
 	}
 	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/listar/ddd/{param}")
+	public List<Cidade> listarPorDDD(@PathParam("param") String DDD) {
+		try {
+			return new CidadeDAO().listarPorEstado(DDD);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/listar/id/{param}")
+	public List<Cidade> listarPorID(@PathParam("param") String id) {
+		try {
+			return new CidadeDAO().listarPorEstado(id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
